@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Onboarding Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <div class="header-row">
+        <div>
+          <p class="eyebrow">Levvate Prototype</p>
+          <h1>Client Onboarding Flow</h1>
+          <p class="subtext">A multi-step onboarding flow with saved progress, validation, completion tracking, and a simulated HubSpot handoff.</p>
+        </div>
+        <button id="resetBtn" class="secondary-btn">Reset</button>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label-row">
+          <span>Progress</span>
+          <span id="progressText">Step 1 of 4</span>
+        </div>
+        <div class="progress-bar"><div id="progressBar"></div></div>
+      </div>
+
+      <div class="steps" id="stepPills"></div>
+
+      <form id="onboardingForm">
+        <section class="step active" data-step="1">
+          <h2>Company details</h2>
+          <div class="grid">
+            <label>
+              Company name
+              <input type="text" name="companyName" required />
+            </label>
+            <label>
+              Website URL
+              <input type="url" name="websiteUrl" placeholder="https://example.com" required />
+            </label>
+            <label>
+              Primary contact
+              <input type="text" name="contactName" required />
+            </label>
+            <label>
+              Contact email
+              <input type="email" name="contactEmail" required />
+            </label>
+          </div>
+        </section>
+
+        <section class="step" data-step="2">
+          <h2>Business goals</h2>
+          <div class="grid">
+            <label>
+              Main goal
+              <select name="mainGoal" required>
+                <option value="">Select a goal</option>
+                <option>Lead generation</option>
+                <option>Bookings</option>
+                <option>E-commerce sales</option>
+                <option>Brand awareness</option>
+              </select>
+            </label>
+            <label>
+              Monthly site visitors
+              <input type="number" name="monthlyTraffic" min="0" />
+            </label>
+            <label class="full-width">
+              Biggest website challenge
+              <textarea name="biggestChallenge" rows="4" placeholder="Low conversion rate, unclear messaging, outdated design, slow site, etc."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="step" data-step="3">
+          <h2>Project setup</h2>
+          <div class="grid">
+            <label>
+              Requested launch timeline
+              <select name="timeline" required>
+                <option value="">Select timeline</option>
+                <option>ASAP</option>
+                <option>Within 30 days</option>
+                <option>Within 60 days</option>
+                <option>Flexible</option>
+              </select>
+            </label>
+            <label>
+              Budget range
+              <select name="budget" required>
+                <option value="">Select budget</option>
+                <option>$2k-$5k</option>
+                <option>$5k-$10k</option>
+                <option>$10k-$20k</option>
+                <option>$20k+</option>
+              </select>
+            </label>
+            <label>
+              Preferred kickoff date
+              <input type="date" name="kickoffDate" />
+            </label>
+            <label>
+              Need SEO support?
+              <select name="seoSupport">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="step" data-step="4">
+          <h2>Review and submit</h2>
+          <div id="reviewPanel" class="review-panel"></div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="confirmCheck" required />
+            <label for="confirmCheck">I confirm the information above is accurate.</label>
+          </div>
+        </section>
+
+        <div class="footer-row">
+          <button type="button" id="prevBtn" class="secondary-btn">Back</button>
+          <button type="button" id="nextBtn" class="primary-btn">Next</button>
+          <button type="submit" id="submitBtn" class="primary-btn hidden">Submit onboarding</button>
+        </div>
+      </form>
+
+      <section class="status-card">
+        <h3>System events</h3>
+        <ul id="eventLog"></ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
